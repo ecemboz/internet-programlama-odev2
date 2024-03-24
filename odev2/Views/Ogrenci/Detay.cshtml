@@ -1,0 +1,76 @@
+﻿@model odev2.Models.Ogrenci
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Öğrenci Detayı";
+}
+
+<style>
+    .col-sm-3
+    {
+        width: 50%;
+    }
+
+    .col-sm-9 
+    {
+        width: 50%;
+    }
+</style>
+
+<main role="main" class="pb-3">
+    <div class="container">
+        <div>
+            <br />
+        </div>
+
+        <h1 style="text-align: center;">ÖĞRENCİ DETAYI</h1>
+
+        <div>
+            <br />
+        </div>
+
+        <div class="row">
+            <div class="col-md-4">
+                <dl class="row">
+                    <dt class="col-sm-3">Öğrenci No</dt>
+                    <dd class="col-sm-9">@Model.OgrenciNo</dd>
+
+                    <dt class="col-sm-3">Ad</dt>
+                    <dd class="col-sm-9">@Model.Ad</dd>
+
+                    <dt class="col-sm-3">Soyad</dt>
+                    <dd class="col-sm-9">@Model.Soyad</dd>
+
+                    <dt class="col-sm-3">Sınıf</dt>
+                    <dd class="col-sm-9">@Model.Sinif</dd>
+
+                    <dt class="col-sm-3">Ders Tanımı</dt>
+                    <dd class="col-sm-9">@Model.DersTanimi</dd>
+
+                    <dt class="col-sm-3">Kredi</dt>
+                    <dd class="col-sm-9">@Model.Kredi</dd>
+
+                    <dt class="col-sm-3">Sınav Tarihi</dt>
+                    <dd class="col-sm-9">@Model.SinavTarihi</dd>
+
+                    <dt class="col-sm-3">Vize Notu</dt>
+                    <dd class="col-sm-9">@Model.VizeNotu</dd>
+
+                    <dt class="col-sm-3">Final Notu</dt>
+                    <dd class="col-sm-9">@Model.FinalNotu</dd>
+
+                    <dt class="col-sm-3">Ortalama</dt>
+                    <dd class="col-sm-9">@Model.Ortalama</dd>
+
+                    <dt class="col-sm-3">Harf Karşılığı</dt>
+                    <dd class="col-sm-9">@Model.HarfKarsiligi</dd>
+
+                    <dt class="col-sm-3">Geçme Durumu</dt>
+                    <dd class="col-sm-9">@(Model.GecmeDurumu ? "Geçti":"Kaldı")</dd>
+                </dl>
+            </div>
+        </div>
+
+        <a asp-action="Listele" class="btn btn-secondary">Listeye Geri Dön</a>
+    </div>
+</main>

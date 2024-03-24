@@ -1,0 +1,27 @@
+﻿@model odev2.Models.Ogrenci
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Öğrenci Silme Onayı";
+}
+
+<main role="main" class="pb-3">
+    <div class="container">
+        <h1>Öğrenci Silme Onayı</h1>
+
+        <div>
+            <h3>Öğrenci Bilgileri</h3>
+            <dl class="row">
+                <dt class="col-sm-3">Öğrenci No:</dt>
+                <dd class="col-sm-9">@Model.OgrenciNo</dd>
+                <!-- Diğer detaylar -->
+            </dl>
+
+            <form asp-action="SilOnay" method="post">
+                <input type="hidden" asp-for="OgrenciNo" />
+                <button type="submit" class="btn btn-danger">Sil</button>
+                <a asp-action="Listele" class="btn btn-secondary">İptal</a>
+            </form>
+        </div>
+    </div>
+</main>

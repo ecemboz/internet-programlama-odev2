@@ -1,0 +1,46 @@
+﻿@model odev2.Models.Ogrenci
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Öğrenci Silme";
+}
+
+<main role="main" class="pb-3">
+    <div class="container">
+        <div>
+            <br />
+        </div>
+
+        <h1 style="text-align: center;">ÖĞRENCİ SİLME</h1>
+
+        <div>
+            <h3>Silinecek öğrencinin bilgileri:</h3>
+
+            <div class="card">
+                <div class="card-body">
+                    <dl class="row">
+                        <dt class="col-sm-3">Öğrenci No:</dt>
+                        <dd class="col-sm-9">@Model.OgrenciNo</dd>
+
+                        <dt class="col-sm-3">Öğrenci Adı:</dt>
+                        <dd class="col-sm-9">@Model.Ad</dd>
+
+                        <dt class="col-sm-3">Öğrenci Soyadı:</dt>
+                        <dd class="col-sm-9">@Model.Soyad</dd>
+                    </dl>
+                </div>
+            </div>
+
+            <div>
+                <br />
+            </div>
+
+            <form asp-action="Sil">
+                <input type="hidden" asp-for="OgrenciNo" />
+                <button type="submit" class="btn btn-primary">Sil</button>
+                <a asp-action="Listele" class="btn btn-secondary">İptal</a>
+            </form>
+        </div>
+
+    </div>
+</main>

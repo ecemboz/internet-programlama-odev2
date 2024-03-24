@@ -1,0 +1,94 @@
+﻿@model IEnumerable<odev2.Models.Ogrenci>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Öğrenci Listeleme";
+}
+
+<style>
+    table {
+        width: 100%;
+        background-color: #DBB3B3;
+    }
+
+    th {
+        border: 1px solid #212529;
+        text-align: center;
+        padding: 8px;
+    }
+
+    td {
+        border: 1px solid #212529;
+        text-align: left;
+        padding: 8px;
+    }
+
+    tr.hey:nth-child(odd) {
+        background-color: #F7CACA;
+    }
+
+    tr.hey:nth-child(even) {
+        background-color: #EFD8DB;
+    }
+
+</style>
+
+<main role="main" class="pb-3">
+    <div class="container">
+        <div>
+            <br />
+        </div>
+        <h1 style="text-align: center;">ÖĞRENCİ LİSTESİ</h1>
+
+        <p>
+            <a asp-action="YeniKayit" class="btn btn-primary">Yeni Öğrenci Ekle</a>
+        </p>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Öğrenci No</th>
+                    <th>Ad</th>
+                    <th>Soyad</th>
+                    <th>Sınıf</th>
+                    <th>Ders Tanımı</th>
+                    <th>Kredi</th>
+                    <th>Sınav Tarihi</th>
+                    <th>Vize Notu</th>
+                    <th>Final Notu</th>
+                    <th>Ortalama</th>
+                    <th>Harf Karşılığı</th>
+                    <th>Geçme Durumu</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var ogrenci in Model)
+                {
+                    <tr class="hey">
+                        <td>@ogrenci.OgrenciNo</td>
+                        <td>@ogrenci.Ad</td>
+                        <td>@ogrenci.Soyad</td>
+                        <td>@ogrenci.Sinif</td>
+                        <td>@ogrenci.DersTanimi</td>
+                        <td>@ogrenci.Kredi</td>
+                        <td>@(ogrenci.SinavTarihi.ToString("dd.MM.yyyy"))</td>
+                        <td>@ogrenci.VizeNotu</td>
+                        <td>@ogrenci.FinalNotu</td>
+                        <td>@(Math.Round((ogrenci.VizeNotu * 0.4 + ogrenci.FinalNotu * 0.6), 2))</td>
+                        <td>@ogrenci.HarfKarsiligi</td>
+                        <td>@(ogrenci.GecmeDurumu ? "Geçti" : "Kaldı")</td>
+                        <td>
+                            <div class="btn-group" role="group" aria-label="Öğrenci İşlemleri">
+                                <a asp-action="Detay" asp-route-id="@ogrenci.OgrenciNo" class="btn btn-primary btn-sm">Detay</a>
+                                &nbsp;
+                                <a asp-action="Guncelle" asp-route-id="@ogrenci.OgrenciNo" class="btn btn-primary btn-sm">Güncelle</a>
+                                &nbsp;
+                                <a asp-action="Sil" asp-route-id="@ogrenci.OgrenciNo" class="btn btn-primary btn-sm">Sil</a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</main>
